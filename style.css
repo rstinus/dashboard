@@ -1,10 +1,9 @@
-/* MODIF: Design Hyper-Stylé Terminal / Linux */
 :root {
-    --bg-color: #0c0c0c;
-    --terminal-bg: #1a1b1e;
-    --accent-color: #00ff41; /* Vert Matrix/Linux */
-    --text-color: #d1d1d1;
-    --border-color: #333;
+    --bg-color: #050505;
+    --terminal-bg: rgba(30, 30, 35, 0.8); /* Semi-transparent */
+    --header-bg: #701a75; /* Fuchsia foncé */
+    --accent-color: #22d3ee; /* Cyan pour le texte */
+    --text-color: #cbd5e1;
 }
 
 * {
@@ -16,12 +15,7 @@
 
 body {
     background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
+    background-image: radial-gradient(circle at 50% 50%, #4a044e 0%, transparent 50%);
 }
 
 /* Effet Scanline (vielle télé/terminal) */
@@ -45,20 +39,51 @@ body {
     width: 90%;
     max-width: 900px;
     background: var(--terminal-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px); /* Effet verre dépoli */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
 
 /* Header Terminal */
 .terminal-header {
-    background: #2d2d2d;
-    padding: 10px;
+    background: var(--header-bg);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
     display: flex;
     align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+.header-controls {
+    display: flex;
     gap: 8px;
 }
+
+.control-btn {
+    border: none;
+    background: #4c0519; /* Violet très sombre */
+    color: #94a3b8;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: 0.2s;
+}
+
+.control-btn:hover { background: #831843; color: white; }
+.control-btn.close:hover { background: #b91c1c; }
 
 .dot { width: 12px; height: 12px; border-radius: 50%; }
 .red { background: #ff5f56; }

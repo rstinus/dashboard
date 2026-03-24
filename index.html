@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remy@Home-Server: ~/</title>
+    <title>Rémy STINUS - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +11,16 @@
     <div class="container">
         <header>
             <div class="terminal-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="title">remy-stinus@home-server: ~ / root_portal</span>
-            </div>
-            <div class="stats">
-                <p><span class="prompt">remy@server:~$</span> uptime --pretty</p>
-                <p class="res">up 14 days, 2 hours, 5 minutes</p>
-            </div>
+    		<div class="header-left">
+        		<span class="terminal-icon">>_</span>
+        		<span class="title">remy@server: ~/dashboard</span>
+    		</div>
+    		<div class="header-controls">
+        		<button class="control-btn mini">—</button>
+        		<button class="control-btn max">▢</button>
+        	<button class="control-btn close">✕ </button>
+    		</div>
+	    </div>
         </header>
 
         <main class="grid">
@@ -32,32 +33,25 @@
                 </div>
             </a>
 
-            <a href="https://lab.remystinus.fr" class="card">
-                <div class="card-icon">🧪</div>
+            <!--<a href="https://lab.remystinus.fr"-->
+	    <a class="card">
+                <div class="card-icon">🔐</div>
                 <div class="card-content">
-                    <h3>02. Lab-Environment</h3>
-                    <p>Docker / Network Testing</p>
+                    <h3>02. SSH connexion</h3>
+                    <p>React / connection</p>
                     <span class="status">SECURED</span>
                 </div>
             </a>
 
-            <a href="https://github.com/ton-pseudo" target="_blank" class="card">
+            <a href="https://github.com/rstinus" target="_blank" class="card">
                 <div class="card-icon">📁</div>
                 <div class="card-content">
-                    <h3>03. Repositories</h3>
+                    <h3>03. Repositories git</h3>
                     <p>Open Source Projects</p>
-                    <span class="status">GIT_PUSH</span>
+                    <span class="status">ONLINE</span>
                 </div>
             </a>
 
-            <div class="card locked">
-                <div class="card-icon">🛰️</div>
-                <div class="card-content">
-                    <h3>04. Sys-Monitor</h3>
-                    <p>Grafana / Prometheus</p>
-                    <span class="status pulse">ENCRYPTING...</span>
-                </div>
-            </div>
         </main>
 
         <footer>
