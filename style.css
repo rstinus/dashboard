@@ -1,9 +1,12 @@
 :root {
-    --bg-color: #050505;
-    --terminal-bg: rgba(30, 30, 35, 0.8); /* Semi-transparent */
-    --header-bg: #701a75; /* Fuchsia foncé */
-    --accent-color: #22d3ee; /* Cyan pour le texte */
+    --bg-color: #0b1120;
+    --terminal-bg: rgba(30, 41, 59, 0.7);
+    --header-bg: #a21caf;
+    --btn-bg: #581c87;
+    --accent-color: #b716f7;
+    --accent-green: #d608e9;
     --text-color: #cbd5e1;
+    --border-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -15,19 +18,25 @@
 
 body {
     background-color: var(--bg-color);
-    background-image: radial-gradient(circle at 50% 50%, #4a044e 0%, transparent 50%);
+    background-image: radial-gradient(circle at 50% -20%, #4a044e 0%, transparent 40%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-/* Effet Scanline (vielle télé/terminal) */
 .scanline {
     width: 100%;
     height: 100px;
     z-index: 10;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 255, 65, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(34, 211, 238, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
     opacity: 0.1;
     position: absolute;
     bottom: 100%;
-    animation: scanline 6s linear infinite;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
 }
 
 @keyframes scanline {
@@ -39,68 +48,70 @@ body {
     width: 90%;
     max-width: 900px;
     background: var(--terminal-bg);
-    backdrop-filter: blur(12px); /* Effet verre dépoli */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
 
-/* Header Terminal */
 .terminal-header {
     background: var(--header-bg);
-    padding: 8px 16px;
+    margin: 16px 16px 0 16px;
+    padding: 10px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #e2e8f0;
+    gap: 12px;
+    color: #f8fafc;
+}
+
+.terminal-icon {
+    display: flex;
+    align-items: center;
+    color: #cbd5e1;
+}
+
+.title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .header-controls {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .control-btn {
     border: none;
-    background: #4c0519; /* Violet très sombre */
-    color: #94a3b8;
-    width: 24px;
-    height: 24px;
+    background: var(--btn-bg);
+    color: #cbd5e1;
+    width: 28px;
+    height: 28px;
     border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 10px;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
-.control-btn:hover { background: #831843; color: white; }
-.control-btn.close:hover { background: #b91c1c; }
+.control-btn:hover { background: #7e22ce; color: white; }
+.control-btn.close:hover { background: #dc2626; }
 
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-.title { margin-left: auto; margin-right: auto; font-size: 0.8rem; color: #888; }
-
-.stats { padding: 20px; border-bottom: 1px solid var(--border-color); }
-.prompt { color: var(--accent-color); }
-.res { color: #888; margin-top: 5px; }
-
-/* Grid des liens */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 30px;
+    padding: 30px 20px;
 }
 
 .card {
@@ -108,38 +119,56 @@ body {
     color: inherit;
     border: 1px solid var(--border-color);
     padding: 20px;
-    border-radius: 4px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     gap: 15px;
     transition: all 0.3s ease;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .card:hover {
     border-color: var(--accent-color);
-    background: rgba(0, 255, 65, 0.05);
+    background: rgba(34, 211, 238, 0.05);
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 255, 65, 0.1);
+    box-shadow: 0 5px 15px rgba(34, 211, 238, 0.1);
 }
 
 .card-icon { font-size: 2rem; }
-.card-content h3 { font-size: 1rem; color: var(--accent-color); margin-bottom: 5px; }
-.card-content p { font-size: 0.8rem; color: #888; margin-bottom: 10px; }
+.card-content h3 { font-size: 1rem; color: var(--accent-green); margin-bottom: 5px; }
+.card-content p { font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px; }
 
 .status {
     font-size: 0.7rem;
-    background: #333;
-    padding: 2px 8px;
-    border-radius: 10px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px;
     color: #fff;
+    background: #333;
+}
+.status.online { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+.status.secured { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+
+/* --- FOOTER --- */
+footer {
+    padding: 0 20px 20px 20px;
 }
 
-.locked { opacity: 0.5; cursor: not-allowed; }
+.blink {
+    animation: blinker 1.5s step-end infinite;
+    color: var(--accent-green);
+    font-size: 0.85rem;
+}
 
-/* Animations */
-.blink { animation: blinker 1s linear infinite; padding: 20px; color: var(--accent-color); font-size: 0.8rem; }
 @keyframes blinker { 50% { opacity: 0; } }
 
-.pulse { animation: pulseAnim 2s infinite; }
-@keyframes pulseAnim { 0% { color: #888; } 50% { color: #ffbd2e; } 100% { color: #888; } }
+#cyberRain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+}
