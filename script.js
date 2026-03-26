@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const alphabet = '01{}[];=>/|!#$@%&abcdef0123456789';
     const characters = alphabet.split('');
 
-    const fontSize = 16;
+    const fontSize = 20;
     const columns = Math.floor(canvas.width / fontSize);
 
     const drops = [];
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function draw() {
-        ctx.fillStyle = 'rgba(11, 17, 32, 0.05)';
+        ctx.fillStyle = 'rgba(15, 32, 75, 0.16)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#22d3ee';
+        ctx.fillStyle = '#00ff88';
         ctx.font = fontSize + 'px monospace';
 
         for (let i = 0; i < drops.length; i++) {

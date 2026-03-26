@@ -88,6 +88,22 @@ body {
     letter-spacing: 0.5px;
 }
 
+.title-mobile {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    /* Masque le texte desktop */
+    .title-desktop {
+        display: none;
+    }
+
+    /* Affiche le texte mobile */
+    .title-mobile {
+        display: block;
+    }
+}
+
 .header-controls {
     display: flex;
     gap: 10px;
